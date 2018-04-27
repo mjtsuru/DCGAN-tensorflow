@@ -307,11 +307,13 @@ class DCGAN(object):
               save_images(samples, image_manifold_size(samples.shape[0]),
                     './{}/train_{:02d}_{:04d}.png'.format(config.sample_dir, epoch, idx))
               print("[Sample] d_loss: %.8f, g_loss: %.8f" % (d_loss, g_loss))
-              print('./{}/train_{:02d}_{:04d}.png')
-              img = imread('./{}/train_{:02d}_{:04d}.png')
+              print('./{}/train_{:02d}_{:04d}.png'.format(config.sample_dir, epoch, idx))
+              img = imread('./{}/train_{:02d}_{:04d}.png'.format(config.sample_dir, epoch, idx))
               plt.imshow(img)
               plt.show()
             except:
+              import traceback
+              traceback.print_exec()
               print("one pic error!...")
 
         if np.mod(counter, 500) == 2:
